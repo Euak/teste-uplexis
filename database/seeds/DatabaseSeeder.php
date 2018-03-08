@@ -27,6 +27,15 @@ class UsuarioTableSeeder extends Seeder {
 
         $usuario->timestamps = false;
         $usuario->save();
+
+        $usuario = new Usuario(array(
+                'usuario' => 'teste',
+                'senha' => bcrypt('321')
+        ));
+
+        $usuario->timestamps = false;
+        $usuario->save();
+    
     }
 
 }

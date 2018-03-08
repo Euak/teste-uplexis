@@ -42,7 +42,12 @@
 	        $.ajax({
 	            type: "GET",
 	            url: '/teste-uplexis/public/index.php/api/sintegra/es/'+cnpj,
-	            data: '{"username": "kaue", "password" : "123"}',
+			    xhrFields: {
+			        withCredentials: true
+			    },
+	            beforeSend: function (xhr) {
+			        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('{{$usuario}}:{{$senha}}'));
+			    },
 	            success: function( msg ) {
            		  $("#ajaxResponse").html("");
 	            	if(!jQuery.isEmptyObject(msg)){

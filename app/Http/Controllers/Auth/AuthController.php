@@ -4,6 +4,7 @@ use Auth;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Session;
 
 class AuthController extends Controller {
 
@@ -48,6 +49,7 @@ class AuthController extends Controller {
 
         if (Auth::attempt(['usuario' => $usuario, 'password' => $senha]))
         {
+            Session::put(['user.plain_pass' => $senha]);
             return redirect()->intended('consulta');
         }else{
              return redirect()->back();

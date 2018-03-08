@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use App\Sintegra;
 use Auth;
+use Session;
 
 class ConsultaController extends Controller {
 
@@ -16,7 +17,10 @@ class ConsultaController extends Controller {
      */
     public function index()
     {
-        return view('consulta.index');
+        $senha = Session::get('user.plain_pass');
+        $usuario = Auth::user()->usuario;
+
+        return view('consulta.index', compact('senha', 'usuario'));
     }
 
     /**
