@@ -50,8 +50,7 @@ class AuthController extends Controller {
         {
             return redirect()->intended('consulta');
         }else{
-            echo $usuario . '<br>';
-            echo bcrypt($senha);
+             return redirect()->back();
         }
     }
 
