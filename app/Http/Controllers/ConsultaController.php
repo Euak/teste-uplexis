@@ -48,15 +48,15 @@ class ConsultaController extends Controller {
         'Situação Cadastral Vigente', 'Data desta Situação Cadastral', 'Regime de Apura&ccedil;&atilde;o', 'Emitente de NFe desde'
         ];
 
-        //Verifica se encontrou algo
+        //Verifica se o sistema retornou cadastro
         if(preg_match ('/<title>Resultado da Consulta ao Sintegra<\/title>/s', $response)){
 
+            //Recupera e limpa os valores dos campos encontrados
             foreach ($fields as $field) {
                 preg_match('/((?<='.$field.').*?(?=">))(.*?)(?=<\/td)/s', $response, $matches, PREG_OFFSET_CAPTURE);
                 
 
                 if(!empty($matches)){
-                    //print_r($matches[2][0]);
                     preg_match('/(?=">)(.*)/s', $matches[0][0], $matches2, PREG_OFFSET_CAPTURE);
                     $value = preg_replace('/\">/', '', $matches2[0][0]);
                 }
@@ -65,8 +65,10 @@ class ConsultaController extends Controller {
             }
 
 
+            //Armazena os valores em um objeto JSON
             $empresa_obj = json_encode($empresa_array);
 
+            //Salva no banco
             $sintegra = new Sintegra;
             $sintegra->id_usuario = Auth::user()->id;
             $sintegra->cnpj = $empresa_array['CNPJ'];

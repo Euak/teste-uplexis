@@ -1,23 +1,28 @@
-## Laravel PHP Framework
+# Teste Programador PHP - upLexis
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Descrição
+Desenvolver uma aplicação que utilize PHP7 e Framework Laravel 5. A aplicação deve ser capaz de realizar uma requisição ao Sintegra do Estado do Espirito Santo (http://www.sintegra.es.gov.br/). Os dados devem ser salvos em um banco de dados MySQL. Para acesso como serviço da aplicação deve-se desenvolver uma API do tipo REST.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## API Endpoint
+http://localhost/teste-uplexis/public/index.php/api/sintegra/es/{CNPJ} (Apache) ou http://localhost/api/sintegra/es/{CNPJ}
+É utilizado Basic Authentication para autentição na API. Sendo o usuário e senha os mesmos cadastrados no banco dados.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+#### Configuração do Banco de Dados utilizado
+> Host: localhost
+> Nome: uplexis
+> Usuário: root
+> Sem senha
+## Usuários Cadastrados nas Seeds
+> Usuário: kaue
+> Senha: 123
 
-## Official Documentation
+> Usuário: teste
+> Senha: 321
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+#### Comandos para Migrations e Seeds
+> php artisan migrate
+> php artisan db:seed
 
-## Contributing
+#### Notas
+> Apenas foi testado em ambiente com servidor Apache 2.4. Devido à isso, apenas caminhos com prefixo /teste-uplexis/public/index.php/ funcionaram durante os testes.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
